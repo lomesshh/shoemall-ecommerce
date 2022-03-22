@@ -17,15 +17,6 @@
   flex-direction: column;
 }
 
-.profile__image a {
-  padding: 1rem;
-  width: 100%;
-  border: none;
-  background-color: var(--background-color);
-  font-size: 1rem;
-  cursor: pointer;
-}
-
 .profile__image button:hover {
   background-color: rgb(209, 208, 208);
 }
@@ -137,6 +128,25 @@
 .order__image img {
   height: 100%;
   width: 100%;
+}
+
+.notactive {
+  padding: 1rem;
+  width: 100%;
+  border: none;
+  background-color: var(--background-color);
+  border-bottom: var(--background-color) solid 3px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.activetab {
+  border-bottom: var(--primary-color) solid 3px;
+  padding: 1rem;
+  width: 100%;
+  background-color: var(--background-color);
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 650px) {
