@@ -3,22 +3,20 @@ import { NavLink, Outlet } from "react-router-dom";
 import "../stylesheets/profile.css";
 
 const navLinkStyle = ({ isActive }) => {
-  return {
-    borderBottom: isActive ? "#392F5A solid 3px" : "",
-  };
+  return isActive ? `activetab` : `notactive`;
 };
 
 const Profile = () => {
   return (
     <div class="profile__section">
       <div class="profile__image">
-        <NavLink style={navLinkStyle} to="info">
+        <NavLink className={navLinkStyle} to="info">
           My profile
         </NavLink>
-        <NavLink style={navLinkStyle} to="address">
+        <NavLink className={navLinkStyle} to="address">
           Manage Address
         </NavLink>
-        <NavLink style={navLinkStyle} to="orders">
+        <NavLink className={navLinkStyle} to="orders">
           Order History
         </NavLink>
       </div>
