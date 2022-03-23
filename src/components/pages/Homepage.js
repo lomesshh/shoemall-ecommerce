@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const Homepage = () => {
   return (
     <div>
-      <div class="hero">
-        <div class="hero__left">
-          <div class="hero__info">
+      <div className="hero">
+        <div className="hero__left">
+          <div className="hero__info">
             <h1>ARE YOU READY TO</h1>
             <h1>LEAD THE WAY</h1>
             <p>
@@ -14,7 +14,7 @@ const Homepage = () => {
               the same thing. we have a wide range of different categories of
               shoe.
             </p>
-            <div class="hero__info-button">
+            <div className="hero__info-button">
               <Link to="/productslist">
                 <button>Explore</button>
               </Link>
@@ -22,7 +22,7 @@ const Homepage = () => {
             </div>
           </div>
         </div>
-        <div class="hero__right">
+        <div className="hero__right">
           <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <path
               fill="#392F5A"
@@ -38,15 +38,18 @@ const Homepage = () => {
       </div>
 
       <div className="banner">
-        <img src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1647501490/shoemall/offer2_olw8zx.jpg"></img>
+        <img
+          src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1647501490/shoemall/offer2_olw8zx.jpg"
+          alt="banner-img"
+        />
       </div>
 
-      <div id="category" class="category">
-        <div class="category__title">
+      <div id="category" className="category">
+        <div className="category__title">
           <h1>Categories</h1>
         </div>
-        <div class="category__heading">
-          <div class="category__card category__card-one">
+        <div className="category__heading">
+          <div className="category__card category__card-one">
             <h1>Casual </h1>
             <Link to="/productslist">
               <img
@@ -55,7 +58,7 @@ const Homepage = () => {
               />
             </Link>
           </div>
-          <div class="category__card category__card-two">
+          <div className="category__card category__card-two">
             <h1>Sports </h1>
             <Link to="/productslist">
               <img
@@ -64,7 +67,7 @@ const Homepage = () => {
               />
             </Link>
           </div>
-          <div class="category__card category__card-three">
+          <div className="category__card category__card-three">
             <h1>Formal </h1>
             <Link to="/productslist">
               <img
@@ -73,7 +76,7 @@ const Homepage = () => {
               />
             </Link>
           </div>
-          <div class="category__card category__card-four">
+          <div className="category__card category__card-four">
             <h1>Flip flops</h1>
             <Link to="/productslist">
               <img
@@ -86,7 +89,10 @@ const Homepage = () => {
       </div>
 
       <div className="banner">
-        <img src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1647501490/shoemall/offer3_a5achi.jpg"></img>
+        <img
+          src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1647501490/shoemall/offer3_a5achi.jpg"
+          alt="banner-img"
+        />
       </div>
     </div>
   );

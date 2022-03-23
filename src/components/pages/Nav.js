@@ -15,23 +15,23 @@ const Nav = () => {
   const navigate = useNavigate();
 
   return (
-    <nav class="nav">
+    <nav className="nav">
       <Link to="/">
         <div>
           <img
-            class="nav__logo"
+            className="nav__logo"
             src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1647240006/shoemall/logo_rhszkc.png"
             alt="logo-img"
           />
         </div>
       </Link>
-      <div class="nav__option">
+      <div className="nav__option">
         <ul>
           {token && (
             <li>
               <Link to="/">
-                <button class="nav__option-login" onClick={handleLogout}>
-                  <i class="fas fa-door-open"></i> Logout
+                <button className="nav__option-login" onClick={handleLogout}>
+                  <i className="fas fa-door-open"></i> Logout
                 </button>
               </Link>
             </li>
@@ -40,8 +40,8 @@ const Nav = () => {
           {!token && (
             <li>
               <Link to="/login">
-                <button class="nav__option-login">
-                  <i class="fas fa-sign-in-alt"></i> Login
+                <button className="nav__option-login">
+                  <i className="fas fa-sign-in-alt"></i> Login
                 </button>
               </Link>
             </li>
@@ -52,14 +52,14 @@ const Nav = () => {
             }
           >
             <p>
-              <i class="fas fa-heart"></i>
+              <i className="fas fa-heart"></i>
               <span>{state.wishlist.length}</span>
             </p>
           </li>
           <li>
             <Link to={`${localToken ? `cart` : `login`}`}>
               <p>
-                <i class="fas fa-shopping-cart"></i>
+                <i className="fas fa-shopping-cart"></i>
                 <span>{cartstate.cart.length}</span>
               </p>
             </Link>
@@ -67,7 +67,7 @@ const Nav = () => {
           <li>
             <Link to={`${localToken ? `profile/info` : `login`}`}>
               <p>
-                <i class="fa-solid fa-user"></i>
+                <i className="fa-solid fa-user"></i>
               </p>
             </Link>
           </li>
