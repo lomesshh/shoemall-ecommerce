@@ -114,7 +114,6 @@ const FilterProvider = ({ children }) => {
     });
     let unifiedData = [];
     let flag = false;
-    // console.log(categoryArr, "catArr");
     unifiedData = newData.filter(({ category }) => {
       if (categoryArr.includes("CASUAL_SHOE")) {
         flag = true;

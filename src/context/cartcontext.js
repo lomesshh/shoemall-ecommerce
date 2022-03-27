@@ -68,7 +68,6 @@ const CartProvider = ({ children }) => {
   const finalAmount = totalAmount - discountAmount + delivery;
 
   const getCartData = async () => {
-    console.log("getdata called");
     cartdispatch({ type: "API_REQUEST" });
     try {
       const response = await axios.get("/api/user/cart", {
@@ -79,9 +78,7 @@ const CartProvider = ({ children }) => {
         payload: response.data.cart,
         loading: false,
       });
-      console.log("cartData", response.data.cart);
     } catch (error) {
-      console.log(error);
       cartdispatch({ type: "ERROR_HANDLE" });
     }
   };

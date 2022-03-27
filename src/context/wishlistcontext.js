@@ -43,7 +43,6 @@ const WishlistProvider = ({ children }) => {
         loading: false,
       });
     } catch (error) {
-      console.log(error);
       dispatch({ type: "ERROR_HANDLE" });
     }
   };

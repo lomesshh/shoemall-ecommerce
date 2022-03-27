@@ -149,7 +149,24 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 650px) {
+.profile__section .address__card--flex {
+  margin: 0 0.5rem;
+}
+
+.profile__section .manage__address {
+  margin: 0 1rem;
+}
+
+.profile__section .all__orders {
+  margin: 0 1rem;
+}
+
+.empty__order {
+  position: absolute;
+  top: 50%;
+}
+
+@media screen and (max-width: 770px) {
   .profile__section {
     flex-direction: column;
   }
@@ -170,10 +187,41 @@
   .profile__image {
     margin: auto;
     margin-top: 1rem;
+    margin: 0;
   }
   .image__outer {
     width: 60%;
     height: 200px;
     margin: auto;
+  }
+  .profile__section .order__main {
+    flex-wrap: wrap;
+  }
+  .order__outer {
+    margin: 0.5rem 0rem;
+  }
+  .order__details {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .order__info {
+    font-size: 0.8rem;
+  }
+  .order__image {
+    margin: 0rem 0.5rem;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .order__outer {
+    width: 230px;
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .order__outer {
+    width: 215px;
   }
 }

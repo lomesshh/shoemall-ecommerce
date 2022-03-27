@@ -13,12 +13,10 @@ const loadScript = async (url) => {
 
     script.onload = () => {
       resolve(true);
-      console.log("loaded");
     };
 
     script.onerror = () => {
       resolve(false);
-      console.log("error");
     };
 
     document.body.appendChild(script);
@@ -62,7 +60,6 @@ const Checkout = () => {
           paymentId: response.razorpay_payment_id,
           delivery: orderstate.deliveryAddress,
         };
-        console.log("tempobj", tempObj);
         orderdispatch({ type: "ADD_ORDERS", payload: tempObj });
         cartdispatch({ type: "EMPTY_CART" });
         Notify("Your Payment is successfull !", "success");
@@ -102,7 +99,7 @@ const Checkout = () => {
                   <p>Name : {item.name}</p>
                   <p>Email : {item.email}</p>
                   <p>
-                    Address : {item.address}, {item.city}, Pin-code :{" "}
+                    Address : {item.address}, {item.city}, Pin-code :
                     {item.zipcode}
                   </p>
                   <p>State : {item.state}</p>
@@ -213,7 +210,7 @@ const Checkout = () => {
           {cartstate.cart.map((item) => (
             <div>
               <p>
-                {item.name} x {item.quantity}
+                {item.name.substring(0, 15) + "..."} x {item.quantity}
               </p>
               <p>₹ {item.price * item.quantity}</p>
             </div>

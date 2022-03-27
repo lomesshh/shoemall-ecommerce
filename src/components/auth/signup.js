@@ -55,7 +55,6 @@ const Signup = () => {
   const createUser = async (values) => {
     try {
       const response = await axios.post("/api/auth/signup", values);
-      console.log(response.data);
       navigate("/login");
     } catch (error) {
       console.log(error);

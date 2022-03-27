@@ -106,9 +106,23 @@
   margin-left: 0.2rem;
 }
 
-@media screen and (max-width: 800px) {
+.checkout__section .cart__section-bill {
+  margin-left: 0rem;
+}
+
+@media screen and (max-width: 1220px) {
   .checkout__section {
     flex-direction: column;
+  }
+  .checkout__section .cart__section-items,
+  .checkout__section .cart__section-bill {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .address__card--flex {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -119,5 +133,11 @@
   .shipping__info-left,
   .shipping__info-right {
     width: 100%;
+  }
+  .checkout__section .cart__section-bill {
+    font-size: 0.8rem;
+  }
+  .checkout__section .cart__section-bill p {
+    font-size: 1rem;
   }
 }

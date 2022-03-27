@@ -8,9 +8,12 @@ const Orders = () => {
     <div>
       <div className="all__orders">
         <h1>All orders</h1>
+        {orderstate.orders.length < 1 && (
+          <h4 className="empty__order">No orders found !</h4>
+        )}
         {orderstate.orders.map((item) => (
           <div key={item.paymentId} className="order__main">
-            <div>
+            <div className="order__details">
               <h4 className="order__confirm">Order Confirmed</h4>
               <h4>Payment ID: {item.paymentId}</h4>
               <h4>Total Amount : ₹ {item.amount}</h4>
