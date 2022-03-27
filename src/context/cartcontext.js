@@ -11,30 +11,34 @@ const initialValue = {
   loading: false,
 };
 
-const incrementQty = (state, item) => {
-  const tempArr = JSON.parse(JSON.stringify(state));
-  const findItem = tempArr.cart.find((prod) => prod._id === item._id);
+// const incrementQty = (cart, item) => {
+// const tempCart = [...cart];
+// const findIndex = tempCart.findIndex((prod) => prod._id === item._id);
+// console.log(findIndex);
+// tempCart[findIndex] = { ...tempCart[findIndex], quantity + 1 }
+// const tempArr = JSON.parse(JSON.stringify(state));
+// const findItem = tempArr.cart.find((prod) => prod._id === item._id);
 
-  tempArr.cart[tempArr.cart.indexOf(findItem)].quantity++;
-  return tempArr;
-};
+// tempArr.cart[tempArr.cart.indexOf(findItem)].quantity++;
+// return tempArr;
+// };
 
-const decrementQty = (state, item) => {
-  const tempArr = JSON.parse(JSON.stringify(state));
-  const findItem = tempArr.cart.find((prod) => prod._id === item._id);
+// const decrementQty = (state, item) => {
+//   const tempArr = JSON.parse(JSON.stringify(state));
+//   const findItem = tempArr.cart.find((prod) => prod._id === item._id);
 
-  tempArr.cart[tempArr.cart.indexOf(findItem)].quantity--;
-  return tempArr;
-};
+//   tempArr.cart[tempArr.cart.indexOf(findItem)].quantity--;
+//   return tempArr;
+// };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
       return { ...state, cart: [...action.payload], loading: false };
     case "INCREMENT_QTY":
-      return incrementQty(state, action.payload);
+      return { ...state, cart: [...action.payload], loading: false };
     case "DECREMENT_QTY":
-      return decrementQty(state, action.payload);
+      return { ...state, cart: [...action.payload], loading: false };
     case "API_REQUEST":
       return { ...state, loading: true };
     case "ERROR_HANDLE":
@@ -51,13 +55,13 @@ const CartProvider = ({ children }) => {
 
   //total cart amount
   const totalAmount = cartstate.cart.reduce(
-    (acc, curr) => acc + curr.price * curr.quantity,
+    (acc, curr) => acc + curr.price * curr.qty,
     0
   );
 
   //total discount amount
   const discountAmount = cartstate.cart.reduce(
-    (acc, curr) => acc + 150 * curr.quantity,
+    (acc, curr) => acc + 150 * curr.qty,
     0
   );
 
@@ -120,6 +124,40 @@ const CartProvider = ({ children }) => {
     }
   };
 
+  const incrementQty = async (item) => {
+    try {
+      const res = await axios.post(
+        `/api/user/cart/${item._id}`,
+        {
+          action: { type: "increment" },
+        },
+        {
+          headers: { authorization: token },
+        }
+      );
+      cartdispatch({ type: "INCREMENT_QTY", payload: res.data.cart });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const decrementQty = async (item) => {
+    try {
+      const res = await axios.post(
+        `/api/user/cart/${item._id}`,
+        {
+          action: { type: "decrement" },
+        },
+        {
+          headers: { authorization: token },
+        }
+      );
+      cartdispatch({ type: "DECREMENT_QTY", payload: res.data.cart });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getCartData();
   }, []);
@@ -134,6 +172,8 @@ const CartProvider = ({ children }) => {
           discountAmount,
           finalAmount,
           addToCart,
+          incrementQty,
+          decrementQty,
         }}
       >
         {children}

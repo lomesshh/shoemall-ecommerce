@@ -210,9 +210,9 @@ const Checkout = () => {
           {cartstate.cart.map((item) => (
             <div>
               <p>
-                {item.name.substring(0, 15) + "..."} x {item.quantity}
+                {item.name.substring(0, 15) + "..."} x {item.qty}
               </p>
-              <p>₹ {item.price * item.quantity}</p>
+              <p>₹ {item.price * item.qty}</p>
             </div>
           ))}
           <div>

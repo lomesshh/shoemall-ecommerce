@@ -6,7 +6,7 @@ import { Notify } from "../pages/Toast";
 import "../stylesheets/cart.css";
 
 const CartCard = ({ item }) => {
-  const { cartdispatch, addToCart } = useCart();
+  const { decrementQty, addToCart, incrementQty } = useCart();
   const { state, addToWishlist } = useWishlist();
 
   const wishlistProdIndex = state.wishlist.findIndex(
@@ -48,23 +48,17 @@ const CartCard = ({ item }) => {
         </div>
         <div className="product__quantity">
           <button
-            className={`${item.quantity < 2 ? `disabledbutton` : ``}`}
+            className={`${item.qty < 2 ? `disabledbutton` : ``}`}
             onClick={() => {
-              if (item.quantity > 1) {
-                cartdispatch({ type: "DECREMENT_QTY", payload: item });
+              if (item.qty > 1) {
+                decrementQty(item);
               }
             }}
           >
             -
           </button>
-          <input value={item.quantity} disabled />
-          <button
-            onClick={() =>
-              cartdispatch({ type: "INCREMENT_QTY", payload: item })
-            }
-          >
-            +
-          </button>
+          <input value={item.qty} disabled />
+          <button onClick={() => incrementQty(item)}>+</button>
         </div>
         {wishlistProdIndex === -1 && (
           <button onClick={() => addToWishlist(item)}>move to wishlist</button>

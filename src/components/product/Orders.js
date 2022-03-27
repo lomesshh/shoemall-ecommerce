@@ -36,7 +36,7 @@ const Orders = () => {
                   <div className="order__info">
                     <h4>Name : {prod.name}</h4>
                     <h4>Category : {prod.category}</h4>
-                    <h4>Quantity : {prod.quantity}</h4>
+                    <h4>Quantity : {prod.qty}</h4>
                     <h4>Price : ₹ {prod.price}</h4>
                   </div>
                 </div>
