@@ -110,6 +110,40 @@
   margin-left: 0rem;
 }
 
+.apply__coupon input {
+  width: 80%;
+  padding: 0.4rem 0rem;
+}
+
+.apply__coupon button {
+  width: 20%;
+  cursor: pointer;
+  background-color: var(--background-color);
+  border: 1px solid var(--primary-color);
+}
+
+.apply__coupon button:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: 1px solid var(--primary-color);
+}
+
+.coupon__amt > * {
+  color: rgb(4, 170, 12);
+}
+
+.coupon__offer {
+  flex-direction: column;
+}
+
+.coupon__offer h4 {
+  padding: 0.3rem 0.5rem;
+  background-color: var(--background-color);
+  border: 1px solid var(--primary-color);
+  margin: 0.2rem 0rem;
+  font-size: 0.9rem;
+}
+
 @media screen and (max-width: 1220px) {
   .checkout__section {
     flex-direction: column;
@@ -139,5 +173,17 @@
   }
   .checkout__section .cart__section-bill p {
     font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .coupon__offer h4 {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .coupon__offer h4 {
+    font-size: 0.65rem;
   }
 }

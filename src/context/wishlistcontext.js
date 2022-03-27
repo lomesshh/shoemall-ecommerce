@@ -23,6 +23,8 @@ const reducer = (state, action) => {
       return { ...state, loading: true };
     case "ERROR_HANDLE":
       return { ...state, loading: false };
+    case "EMPTY_WISHLIST":
+      return { ...state, wishlist: [] };
     default:
       return state;
   }

@@ -42,7 +42,7 @@ const Login = () => {
       localStorage.setItem("token", response.data.encodedToken);
       setLocalToken(response.data.encodedToken);
       setLocalUser(response.data.foundUser);
-      navigate("/profile/info");
+      navigate("/productslist");
     } catch (error) {
       console.log(error);
     }

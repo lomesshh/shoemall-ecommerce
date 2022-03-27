@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useReducer, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useReducer,
+  useEffect,
+  useState,
+} from "react";
 import axios from "axios";
 import { Notify } from "../components/pages/Toast";
 
@@ -10,26 +16,6 @@ const initialValue = {
   cart: [],
   loading: false,
 };
-
-// const incrementQty = (cart, item) => {
-// const tempCart = [...cart];
-// const findIndex = tempCart.findIndex((prod) => prod._id === item._id);
-// console.log(findIndex);
-// tempCart[findIndex] = { ...tempCart[findIndex], quantity + 1 }
-// const tempArr = JSON.parse(JSON.stringify(state));
-// const findItem = tempArr.cart.find((prod) => prod._id === item._id);
-
-// tempArr.cart[tempArr.cart.indexOf(findItem)].quantity++;
-// return tempArr;
-// };
-
-// const decrementQty = (state, item) => {
-//   const tempArr = JSON.parse(JSON.stringify(state));
-//   const findItem = tempArr.cart.find((prod) => prod._id === item._id);
-
-//   tempArr.cart[tempArr.cart.indexOf(findItem)].quantity--;
-//   return tempArr;
-// };
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -52,6 +38,21 @@ const reducer = (state, action) => {
 
 const CartProvider = ({ children }) => {
   const [cartstate, cartdispatch] = useReducer(reducer, initialValue);
+  const [coupon, setCoupon] = useState("");
+  const [couponAmt, setCouponAmt] = useState(0);
+
+  const applyCoupon = () => {
+    if (coupon === "SHOEMALL200") {
+      setCouponAmt(200);
+      Notify("Yayyy, Coupon code applied", "success");
+    } else if (coupon === "NEOGCAMP") {
+      setCouponAmt(300);
+      Notify("Yayyy, Coupon code applied", "success");
+    } else {
+      Notify("Invalid or Expired coupon code", "warning");
+      setCouponAmt(0);
+    }
+  };
 
   //total cart amount
   const totalAmount = cartstate.cart.reduce(
@@ -69,7 +70,7 @@ const CartProvider = ({ children }) => {
   const delivery = totalAmount === 0 ? 0 : 299;
 
   //final amount
-  const finalAmount = totalAmount - discountAmount + delivery;
+  const finalAmount = totalAmount - discountAmount + delivery - couponAmt;
 
   const getCartData = async () => {
     cartdispatch({ type: "API_REQUEST" });
@@ -174,6 +175,10 @@ const CartProvider = ({ children }) => {
           addToCart,
           incrementQty,
           decrementQty,
+          coupon,
+          setCoupon,
+          applyCoupon,
+          couponAmt,
         }}
       >
         {children}

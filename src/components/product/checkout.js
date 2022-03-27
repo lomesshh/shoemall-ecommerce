@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "../../context/cartcontext";
 import { Notify } from "../pages/Toast";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -24,7 +24,16 @@ const loadScript = async (url) => {
 };
 
 const Checkout = () => {
-  const { cartstate, cartdispatch, discountAmount, finalAmount } = useCart();
+  const {
+    cartstate,
+    cartdispatch,
+    discountAmount,
+    finalAmount,
+    coupon,
+    setCoupon,
+    applyCoupon,
+    couponAmt,
+  } = useCart();
   const { localUser } = useAuth();
   const { address, setAddress, orderdispatch, orderstate } = useOrder();
   const navigate = useNavigate();
@@ -206,6 +215,27 @@ const Checkout = () => {
         </div>
 
         <div className="cart__section-bill">
+          <h3>Apply Coupon</h3>
+          <div className="apply__coupon">
+            <input
+              type="text"
+              placeholder="Type coupon code here"
+              value={coupon}
+              onChange={(e) => setCoupon(e.target.value)}
+            />
+            <button
+              onClick={() => {
+                applyCoupon();
+                setCoupon("");
+              }}
+            >
+              Apply
+            </button>
+          </div>
+          <div className="coupon__offer">
+            <h4>Apply NEOGCAMP and get FLAT ₹300 off</h4>
+            <h4>Apply SHOEMALL200 and get FLAT ₹200 off</h4>
+          </div>
           <h1>Order Summary</h1>
           {cartstate.cart.map((item) => (
             <div>
@@ -223,6 +253,12 @@ const Checkout = () => {
             <p>Delivery Charge</p>
             <p>+ ₹ 299</p>
           </div>
+          {couponAmt > 0 && (
+            <div className="coupon__amt">
+              <p>Coupon Discount</p>
+              <p>- ₹ {couponAmt}</p>
+            </div>
+          )}
           <div>
             <h2>Total Amount</h2>
             <h2>₹ {finalAmount}</h2>
