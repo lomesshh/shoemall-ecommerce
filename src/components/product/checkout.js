@@ -72,6 +72,7 @@ const Checkout = () => {
         orderdispatch({ type: "ADD_ORDERS", payload: tempObj });
         Notify("Your Payment is successfull !", "success");
         navigate("/profile/orders");
+        cartdispatch({ type: "EMPTY_CART" });
       },
       prefill: {
         name: localUser.name,

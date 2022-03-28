@@ -15,8 +15,8 @@ const SingleProduct = () => {
   const { cartstate, addToCart } = useCart();
   const { localToken } = useAuth();
 
-  const cartProd = cartstate.cart.find((prod) => prod._id === productId);
-  const wishlistProd = state.wishlist.find((prod) => prod._id === productId);
+  const cartProd = cartstate.cart.find((prod) => prod.id === productId);
+  const wishlistProd = state.wishlist.find((prod) => prod.id === productId);
   const findItem = allproducts.find((prod) => prod.id === productId);
 
   const average = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
@@ -55,8 +55,8 @@ const SingleProduct = () => {
           <div className="singleproduct__info">
             <h1>{findItem.name}</h1>
             <p>
-              {average(findItem.ratings).toFixed(0)}{" "}
-              <i className="fa-solid fa-star"></i> | {findItem.ratings.length}{" "}
+              {average(findItem.ratings).toFixed(0)}
+              <i className="fa-solid fa-star"></i> | {findItem.ratings.length}
               Ratings
             </p>
             <h2>₹ {findItem.price}</h2>

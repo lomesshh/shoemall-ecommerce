@@ -5,7 +5,7 @@ import React, {
   useReducer,
   useState,
 } from "react";
-import { useAuth } from "./authcontext";
+// import { useAuth } from "./authcontext";
 
 const OrderContext = createContext();
 
@@ -47,11 +47,10 @@ const reducer = (state, action) => {
 
 const OrderProvider = ({ children }) => {
   const [orderstate, orderdispatch] = useReducer(reducer, initialValue);
-  const { localUser } = useAuth();
 
   const [address, setAddress] = useState({
-    email: localUser.email,
-    name: localUser.name,
+    email: "",
+    name: "",
     address: "",
     state: "",
     city: "",

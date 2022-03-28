@@ -30,7 +30,7 @@ const reducer = (state, action) => {
     case "ERROR_HANDLE":
       return { ...state, loading: false };
     case "EMPTY_CART":
-      return { ...state, cart: [...action.payload], loading: false };
+      return { ...state, cart: [] };
     default:
       return state;
   }

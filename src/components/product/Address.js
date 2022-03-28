@@ -16,6 +16,8 @@ const Address = () => {
           orderdispatch({ type: "ADD_ADDRESS", payload: address });
           setAddress({
             ...address,
+            name: "",
+            email: "",
             address: "",
             state: "",
             city: "",
@@ -49,6 +51,8 @@ const Address = () => {
                 setAddress((prev) => ({
                   ...prev,
                   address: e.target.value,
+                  name: localUser.name,
+                  email: localUser.email,
                 }))
               }
               required
