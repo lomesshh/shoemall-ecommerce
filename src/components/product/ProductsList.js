@@ -2,10 +2,20 @@ import React, { useState } from "react";
 import "../stylesheets/products.css";
 import ProductCard from "./ProductCard";
 import { useFilter } from "../../context/filtercontext";
+import Pagination from "../pages/Pagination";
+
 const ProductList = () => {
   const [showfilter, setShowfilter] = useState(false);
   const [searchFilter, setSearchFilter] = useState("");
   const { sortedData, dispatch, state } = useFilter();
+  const [currPage, setCurrPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(6);
+
+  const lastPostIndex = currPage * postPerPage;
+  const firstPostIndex = lastPostIndex - postPerPage;
+  const currPost = sortedData.slice(firstPostIndex, lastPostIndex);
+
+  const paginate = (pageNumber) => setCurrPage(pageNumber);
 
   return (
     <div>
@@ -287,7 +297,7 @@ const ProductList = () => {
             />
           </div>
           <div class="product__list-grid">
-            {sortedData
+            {currPost
               .filter((product) => {
                 if (searchFilter === "") {
                   return product;
@@ -303,6 +313,12 @@ const ProductList = () => {
                 <ProductCard item={item} key={index + 1} />
               ))}
           </div>
+          <Pagination
+            postPerPage={postPerPage}
+            totalPosts={sortedData.length}
+            paginate={paginate}
+            currPage={currPage}
+          />
         </div>
       </div>
     </div>

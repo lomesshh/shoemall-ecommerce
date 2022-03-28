@@ -47,7 +47,7 @@ const ProductCard = ({ item }) => {
           <img src={item.image} alt="product" />
         </div>
         <div className="product__card-info">
-          <Link to={`/product/${item._id}`}>
+          <Link to={`/product/${item.id}`}>
             <h4>
               {item.name.length < 20
                 ? item.name
@@ -56,7 +56,7 @@ const ProductCard = ({ item }) => {
             <p>Category: {item.category}</p>
           </Link>
           <div className="product__card-heart">
-            <Link to={`/product/${item._id}`}>
+            <Link to={`/product/${item.id}`}>
               <h3> ₹ {item.price}</h3>
             </Link>
             <h2>
@@ -66,7 +66,7 @@ const ProductCard = ({ item }) => {
               ></i>
             </h2>
           </div>
-          <Link to={`/product/${item._id}`}>
+          <Link to={`/product/${item.id}`}>
             <div>
               <h3>
                 {average(item.ratings).toFixed(0)}
