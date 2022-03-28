@@ -1,13 +1,9 @@
 import React, { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "./cartcontext";
-import { useWishlist } from "./wishlistcontext";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
-  const { cartdispatch } = useCart();
-  const { dispatch } = useWishlist();
 
   const userdata = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
@@ -33,8 +29,6 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
     setLocalToken("");
     setLocalUser({});
-    cartdispatch({ type: "EMPTY_CART" });
-    dispatch({ type: "EMPTY_WISHLIST" });
     navigate("/");
   };
 

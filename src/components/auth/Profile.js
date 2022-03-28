@@ -8,8 +8,8 @@ const navLinkStyle = ({ isActive }) => {
 
 const Profile = () => {
   return (
-    <div class="profile__section">
-      <div class="profile__image">
+    <div className="profile__section">
+      <div className="profile__image">
         <NavLink className={navLinkStyle} to="info">
           My profile
         </NavLink>

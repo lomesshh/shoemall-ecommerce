@@ -8,9 +8,9 @@ import React, {
 import axios from "axios";
 import { Notify } from "../components/pages/Toast";
 
-const CartContext = createContext();
+import { useAuth } from "./authcontext";
 
-const token = localStorage.getItem("token");
+const CartContext = createContext();
 
 const initialValue = {
   cart: [],
@@ -30,7 +30,7 @@ const reducer = (state, action) => {
     case "ERROR_HANDLE":
       return { ...state, loading: false };
     case "EMPTY_CART":
-      return { ...state, cart: [] };
+      return { ...state, cart: [...action.payload], loading: false };
     default:
       return state;
   }
@@ -40,6 +40,7 @@ const CartProvider = ({ children }) => {
   const [cartstate, cartdispatch] = useReducer(reducer, initialValue);
   const [coupon, setCoupon] = useState("");
   const [couponAmt, setCouponAmt] = useState(0);
+  const { localToken } = useAuth();
 
   const applyCoupon = () => {
     if (coupon === "SHOEMALL200") {
@@ -76,7 +77,7 @@ const CartProvider = ({ children }) => {
     cartdispatch({ type: "API_REQUEST" });
     try {
       const response = await axios.get("/api/user/cart", {
-        headers: { authorization: token },
+        headers: { authorization: localToken },
       });
       cartdispatch({
         type: "ADD_TO_CART",
@@ -97,7 +98,7 @@ const CartProvider = ({ children }) => {
           "/api/user/cart",
           { product: { ...item } },
           {
-            headers: { authorization: token },
+            headers: { authorization: localToken },
           }
         );
         cartdispatch({ type: "ADD_TO_CART", payload: response.data.cart });
@@ -110,7 +111,7 @@ const CartProvider = ({ children }) => {
     } else {
       try {
         const response = await axios.delete(`/api/user/cart/${item._id}`, {
-          headers: { authorization: token },
+          headers: { authorization: localToken },
         });
         cartdispatch({ type: "ADD_TO_CART", payload: response.data.cart });
         Notify("Removed from cart", "info");
@@ -133,7 +134,7 @@ const CartProvider = ({ children }) => {
           action: { type: "increment" },
         },
         {
-          headers: { authorization: token },
+          headers: { authorization: localToken },
         }
       );
       cartdispatch({ type: "INCREMENT_QTY", payload: res.data.cart });
@@ -150,7 +151,7 @@ const CartProvider = ({ children }) => {
           action: { type: "decrement" },
         },
         {
-          headers: { authorization: token },
+          headers: { authorization: localToken },
         }
       );
       cartdispatch({ type: "DECREMENT_QTY", payload: res.data.cart });
@@ -158,6 +159,18 @@ const CartProvider = ({ children }) => {
       console.log(error);
     }
   };
+
+  // const clearAllCart = async () => {
+  //   try {
+  //     const res = await axios.post("/user/cart/all", {
+  //       headers: { authorization: localToken },
+  //     });
+  //     console.log(res);
+  //     cartdispatch({ type: "EMPTY_CART", payload: res.data.cart });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   useEffect(() => {
     getCartData();

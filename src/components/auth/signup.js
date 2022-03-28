@@ -62,10 +62,10 @@ const Signup = () => {
   };
 
   return (
-    <div class="login__outer signup__outer">
-      <form class="login signup" onSubmit={formik.handleSubmit}>
-        <h1 class="login__title">Sign Up</h1>
-        <div class="login__fields">
+    <div className="login__outer signup__outer">
+      <form className="login signup" onSubmit={formik.handleSubmit}>
+        <h1 className="login__title">Sign Up</h1>
+        <div className="login__fields">
           <p htmlFor="name">Name</p>
           <input
             type="text"
@@ -119,7 +119,7 @@ const Signup = () => {
             <span className="error__display">{formik.errors.cpassword}</span>
           ) : null}
         </div>
-        <button class="login__button" type="submit">
+        <button className="login__button" type="submit">
           Sign Up
         </button>
 

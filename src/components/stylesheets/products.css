@@ -90,6 +90,7 @@
   margin: 0 auto;
   margin-bottom: 3rem;
   margin-left: 1.5rem;
+  min-height: 60vh;
 }
 
 .product__list-card {

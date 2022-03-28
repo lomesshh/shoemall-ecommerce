@@ -41,14 +41,18 @@ const SingleProduct = () => {
 
   return (
     <div>
-      {!findItem && <Loader />}
+      {!findItem && (
+        <div className="empty__singlepage">
+          <Loader />
+        </div>
+      )}
       {findItem && (
-        <div class="singleproduct">
-          <div class="singleproduct__image">
+        <div className="singleproduct">
+          <div className="singleproduct__image">
             <img src={findItem.image} alt="single-product" />
           </div>
 
-          <div class="singleproduct__info">
+          <div className="singleproduct__info">
             <h1>{findItem.name}</h1>
             <p>
               {average(findItem.ratings).toFixed(0)}{" "}
@@ -58,7 +62,7 @@ const SingleProduct = () => {
             <h2>₹ {findItem.price}</h2>
             <p>{findItem.description}</p>
 
-            <div class="singleproduct__button">
+            <div className="singleproduct__button">
               {!cartProd && <button onClick={cartHandler}>Add to cart</button>}
               {cartProd && (
                 <Link to="/cart">
@@ -74,8 +78,8 @@ const SingleProduct = () => {
                 </Link>
               )}
             </div>
-            <button class="share__button">
-              <i class="fas fa-share"></i>
+            <button className="share__button">
+              <i className="fas fa-share"></i>
             </button>
           </div>
         </div>

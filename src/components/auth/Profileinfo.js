@@ -7,18 +7,18 @@ const Profileinfo = () => {
   const { handleLogout } = useAuth();
 
   return (
-    <div class="profile__info">
-      <div class="profile__name">
+    <div className="profile__info">
+      <div className="profile__name">
         <h1>{userdata.name}</h1>
         <p>Full stack developer</p>
-        <button class="large__screen-button" onClick={handleLogout}>
-          Logout <i class="fa-solid fa-door-open"></i>
+        <button className="large__screen-button" onClick={handleLogout}>
+          Logout <i className="fa-solid fa-door-open"></i>
         </button>
-        <button class="small__screen-button">
-          <i class="fa-solid fa-pen"></i>
+        <button className="small__screen-button">
+          <i className="fa-solid fa-pen"></i>
         </button>
       </div>
-      <div class="profile__about">
+      <div className="profile__about">
         <h4>Name : </h4>
         <p>{userdata.name}</p>
 

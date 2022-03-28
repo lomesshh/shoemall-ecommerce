@@ -92,6 +92,10 @@
   right: 0;
 }
 
+.empty__singlepage {
+  min-height: 85vh;
+}
+
 .outofStock {
   background-color: rgb(153, 153, 153) !important;
   color: rgb(82, 82, 82) !important;

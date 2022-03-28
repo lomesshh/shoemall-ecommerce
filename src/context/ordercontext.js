@@ -1,5 +1,12 @@
-import React, { createContext, useContext, useReducer, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { useAuth } from "./authcontext";
+
 const OrderContext = createContext();
 
 const initialValue = {
@@ -43,8 +50,8 @@ const OrderProvider = ({ children }) => {
   const { localUser } = useAuth();
 
   const [address, setAddress] = useState({
-    name: localUser.name,
     email: localUser.email,
+    name: localUser.name,
     address: "",
     state: "",
     city: "",

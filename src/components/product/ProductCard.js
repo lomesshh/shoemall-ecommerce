@@ -61,7 +61,7 @@ const ProductCard = ({ item }) => {
             </Link>
             <h2>
               <i
-                class={`fa-solid fa-heart ${findItem ? `wishlisted` : ``}`}
+                className={`fa-solid fa-heart ${findItem ? `wishlisted` : ``}`}
                 onClick={wishlistHandler}
               ></i>
             </h2>

@@ -49,10 +49,10 @@ const Login = () => {
   };
 
   return (
-    <div class="login__outer">
-      <form class="login" onSubmit={formik.handleSubmit}>
-        <h1 class="login__title">Log in</h1>
-        <div class="login__fields">
+    <div className="login__outer">
+      <form className="login" onSubmit={formik.handleSubmit}>
+        <h1 className="login__title">Log in</h1>
+        <div className="login__fields">
           <p htmlFor="email">Email</p>
           <input
             type="email"
@@ -83,7 +83,7 @@ const Login = () => {
         <button className="login__button" type="submit">
           Log in
         </button>
-        <div class="login__remember">
+        <div className="login__remember">
           <input type="checkbox" /> <lable> Remember me</lable>
         </div>
         <p>

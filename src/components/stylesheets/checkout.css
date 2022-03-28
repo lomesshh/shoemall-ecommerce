@@ -110,6 +110,12 @@
   margin-left: 0rem;
 }
 
+.discount__div,
+.totalAmt__div {
+  border-top: 1px solid gray;
+  padding-top: 0.4rem;
+}
+
 .apply__coupon input {
   width: 80%;
   padding: 0.4rem 0rem;

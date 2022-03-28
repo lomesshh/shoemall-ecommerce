@@ -70,7 +70,6 @@ const Checkout = () => {
           delivery: orderstate.deliveryAddress,
         };
         orderdispatch({ type: "ADD_ORDERS", payload: tempObj });
-        cartdispatch({ type: "EMPTY_CART" });
         Notify("Your Payment is successfull !", "success");
         navigate("/profile/orders");
       },
@@ -245,7 +244,7 @@ const Checkout = () => {
               <p>₹ {item.price * item.qty}</p>
             </div>
           ))}
-          <div>
+          <div className="discount__div">
             <p>Discount</p>
             <p>- ₹ {discountAmount}</p>
           </div>
@@ -259,7 +258,7 @@ const Checkout = () => {
               <p>- ₹ {couponAmt}</p>
             </div>
           )}
-          <div>
+          <div className="totalAmt__div">
             <h2>Total Amount</h2>
             <h2>₹ {finalAmount}</h2>
           </div>

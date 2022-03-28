@@ -10,7 +10,11 @@ const Pagination = ({ postPerPage, totalPosts, paginate, currPage }) => {
 
   return (
     <div className="paginate__main">
-      <h4>Page {currPage} of 3</h4>
+      {pageNumbers.length > 0 && (
+        <h4>
+          Page {currPage} of {pageNumbers.length}
+        </h4>
+      )}
       <ul>
         {pageNumbers.map((number) => (
           <li key={number} onClick={() => paginate(number)}>

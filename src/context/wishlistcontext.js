@@ -1,10 +1,9 @@
 import React, { createContext, useContext, useReducer, useEffect } from "react";
 import axios from "axios";
 import { Notify } from "../components/pages/Toast";
+import { useAuth } from "./authcontext";
 
 const WishlistContext = createContext();
-
-const token = localStorage.getItem("token");
 
 const initialValue = {
   wishlist: [],
@@ -32,12 +31,13 @@ const reducer = (state, action) => {
 
 const WishlistProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialValue);
+  const { localToken } = useAuth();
 
   const getDataFromWishlist = async () => {
     dispatch({ type: "API_REQUEST" });
     try {
       const response = await axios.get("/api/user/wishlist", {
-        headers: { authorization: token },
+        headers: { authorization: localToken },
       });
       dispatch({
         type: "ADD_TO_WISHLIST",
@@ -60,7 +60,7 @@ const WishlistProvider = ({ children }) => {
             product: { ...item },
           },
           {
-            headers: { authorization: token },
+            headers: { authorization: localToken },
           }
         );
         dispatch({ type: "ADD_TO_WISHLIST", payload: response.data.wishlist });
@@ -73,7 +73,7 @@ const WishlistProvider = ({ children }) => {
     } else {
       try {
         const response = await axios.delete(`/api/user/wishlist/${item._id}`, {
-          headers: { authorization: token },
+          headers: { authorization: localToken },
         });
         dispatch({ type: "ADD_TO_WISHLIST", payload: response.data.wishlist });
         Notify("Removed from wishlist", "info");

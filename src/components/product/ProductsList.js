@@ -19,15 +19,15 @@ const ProductList = () => {
 
   return (
     <div>
-      <div class="short__filter">
-        <div class="short__filter-button">
+      <div className="short__filter">
+        <div className="short__filter-button">
           <button onClick={() => setShowfilter(() => !showfilter)}>
-            <i class="fa-solid fa-filter"></i> Apply Filter
+            <i className="fa-solid fa-filter"></i> Apply Filter
           </button>
         </div>
 
         {showfilter && (
-          <div class="short__filter-filterlist">
+          <div className="short__filter-filterlist">
             <button onClick={() => dispatch({ type: "CLEAR_FILTER" })}>
               Clear all filters
             </button>
@@ -157,7 +157,7 @@ const ProductList = () => {
         )}
       </div>
 
-      <div class="product">
+      <div className="product">
         <div className="product__filter">
           <div className="product__filter-heading">
             <h1>Filters</h1>
@@ -287,8 +287,8 @@ const ProductList = () => {
           </div>
         </div>
 
-        <div class="product__list">
-          <div class="product__list-search">
+        <div className="product__list">
+          <div className="product__list-search">
             <input
               type="text"
               placeholder="Search here"
@@ -296,7 +296,7 @@ const ProductList = () => {
               onChange={(e) => setSearchFilter(e.target.value)}
             />
           </div>
-          <div class="product__list-grid">
+          <div className="product__list-grid">
             {currPost
               .filter((product) => {
                 if (searchFilter === "") {
