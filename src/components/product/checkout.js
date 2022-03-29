@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useCart } from "../../context/cartcontext";
 import { Notify } from "../pages/Toast";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -33,6 +33,7 @@ const Checkout = () => {
     setCoupon,
     applyCoupon,
     couponAmt,
+    clearCart,
   } = useCart();
   const { localUser } = useAuth();
   const { address, setAddress, orderdispatch, orderstate } = useOrder();
@@ -72,7 +73,7 @@ const Checkout = () => {
         orderdispatch({ type: "ADD_ORDERS", payload: tempObj });
         Notify("Your Payment is successfull !", "success");
         navigate("/profile/orders");
-        cartdispatch({ type: "EMPTY_CART" });
+        clearCart();
       },
       prefill: {
         name: localUser.name,

@@ -1,7 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useFilter } from "../../context/filtercontext";
 
 const Homepage = () => {
+  const { dispatch, state } = useFilter();
+  const navigate = useNavigate();
+
   return (
     <div>
       <div className="hero">
@@ -55,6 +59,11 @@ const Homepage = () => {
               <img
                 src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1647240006/shoemall/casual_dmjpy7.png"
                 alt="category-img"
+                onClick={() => {
+                  navigate("/productslist");
+                  state.categoryArr.splice(0, state.categoryArr.length);
+                  dispatch({ type: "CATEGORY", shoetype: "CASUAL_SHOE" });
+                }}
               />
             </Link>
           </div>
@@ -64,6 +73,11 @@ const Homepage = () => {
               <img
                 src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1647240010/shoemall/sports_gaww5n.png"
                 alt="category-img"
+                onClick={() => {
+                  navigate("/productslist");
+                  state.categoryArr.splice(0, state.categoryArr.length);
+                  dispatch({ type: "CATEGORY", shoetype: "SPORTS_SHOE" });
+                }}
               />
             </Link>
           </div>
@@ -73,6 +87,11 @@ const Homepage = () => {
               <img
                 src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1647240006/shoemall/formal_cbbtmd.png"
                 alt="category-img"
+                onClick={() => {
+                  navigate("/productslist");
+                  state.categoryArr.splice(0, state.categoryArr.length);
+                  dispatch({ type: "CATEGORY", shoetype: "FORMAL_SHOE" });
+                }}
               />
             </Link>
           </div>
@@ -82,6 +101,11 @@ const Homepage = () => {
               <img
                 src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1647240006/shoemall/flipflop_qao6dx.png"
                 alt="category-img"
+                onClick={() => {
+                  navigate("/productslist");
+                  state.categoryArr.splice(0, state.categoryArr.length);
+                  dispatch({ type: "CATEGORY", shoetype: "FLIP_FLOP" });
+                }}
               />
             </Link>
           </div>

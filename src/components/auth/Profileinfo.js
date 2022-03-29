@@ -1,9 +1,12 @@
 import React from "react";
 import { useAuth } from "../../context/authcontext";
+import { useCart } from "../../context/cartcontext";
+import { useWishlist } from "../../context/wishlistcontext";
 
 const Profileinfo = () => {
   const userdata = JSON.parse(localStorage.getItem("user"));
-
+  const { clearWishlist } = useWishlist();
+  const { clearCart } = useCart();
   const { handleLogout } = useAuth();
 
   return (
@@ -11,11 +14,25 @@ const Profileinfo = () => {
       <div className="profile__name">
         <h1>{userdata.name}</h1>
         <p>Full stack developer</p>
-        <button className="large__screen-button" onClick={handleLogout}>
+        <button
+          className="large__screen-button"
+          onClick={() => {
+            handleLogout();
+            clearWishlist();
+            clearCart();
+          }}
+        >
           Logout <i className="fa-solid fa-door-open"></i>
         </button>
         <button className="small__screen-button">
-          <i className="fa-solid fa-pen"></i>
+          <i
+            className="fa-solid fa-door-open"
+            onClick={() => {
+              handleLogout();
+              clearWishlist();
+              clearCart();
+            }}
+          ></i>
         </button>
       </div>
       <div className="profile__about">

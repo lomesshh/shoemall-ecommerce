@@ -6,9 +6,9 @@ import { useWishlist } from "../../context/wishlistcontext";
 import "../stylesheets/index.css";
 
 const Nav = () => {
-  const { state } = useWishlist();
+  const { state, clearWishlist } = useWishlist();
 
-  const { cartstate } = useCart();
+  const { cartstate, clearCart } = useCart();
 
   const { token, localToken, handleLogout } = useAuth();
 
@@ -30,7 +30,14 @@ const Nav = () => {
           {token && (
             <li>
               <Link to="/">
-                <button className="nav__option-login" onClick={handleLogout}>
+                <button
+                  className="nav__option-login"
+                  onClick={() => {
+                    handleLogout();
+                    clearWishlist();
+                    clearCart();
+                  }}
+                >
                   <i className="fas fa-door-open"></i> Logout
                 </button>
               </Link>

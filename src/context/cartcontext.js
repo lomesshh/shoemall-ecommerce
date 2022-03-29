@@ -30,7 +30,7 @@ const reducer = (state, action) => {
     case "ERROR_HANDLE":
       return { ...state, loading: false };
     case "EMPTY_CART":
-      return { ...state, cart: [] };
+      return { ...state, cart: [], loading: false };
     default:
       return state;
   }
@@ -126,6 +126,21 @@ const CartProvider = ({ children }) => {
     }
   };
 
+  const clearCart = async () => {
+    try {
+      for (const item of cartstate.cart) {
+        const response = await axios.delete(`/api/user/cart/${item._id}`, {
+          headers: { authorization: localToken },
+        });
+        cartdispatch({ type: "EMPTY_CART" });
+      }
+    } catch (error) {
+      console.log(error);
+      cartdispatch({ type: "ERROR_HANDLE" });
+      Notify("Unable to clear the cart, try again later !", "error");
+    }
+  };
+
   const incrementQty = async (item) => {
     try {
       const res = await axios.post(
@@ -160,18 +175,6 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  // const clearAllCart = async () => {
-  //   try {
-  //     const res = await axios.post("/user/cart/all", {
-  //       headers: { authorization: localToken },
-  //     });
-  //     console.log(res);
-  //     cartdispatch({ type: "EMPTY_CART", payload: res.data.cart });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   useEffect(() => {
     getCartData();
   }, []);
@@ -186,6 +189,7 @@ const CartProvider = ({ children }) => {
           discountAmount,
           finalAmount,
           addToCart,
+          clearCart,
           incrementQty,
           decrementQty,
           coupon,

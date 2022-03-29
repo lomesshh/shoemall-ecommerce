@@ -9,7 +9,7 @@ const ProductList = () => {
   const [searchFilter, setSearchFilter] = useState("");
   const { sortedData, dispatch, state } = useFilter();
   const [currPage, setCurrPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(6);
+  const [postPerPage] = useState(6);
 
   const lastPostIndex = currPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;

@@ -23,7 +23,7 @@ const reducer = (state, action) => {
     case "ERROR_HANDLE":
       return { ...state, loading: false };
     case "EMPTY_WISHLIST":
-      return { ...state, wishlist: [] };
+      return { ...state, wishlist: [], loading: false };
     default:
       return state;
   }
@@ -88,13 +88,30 @@ const WishlistProvider = ({ children }) => {
     }
   };
 
+  const clearWishlist = async () => {
+    try {
+      for (const item of state.wishlist) {
+        const response = await axios.delete(`/api/user/wishlist/${item._id}`, {
+          headers: { authorization: localToken },
+        });
+        dispatch({ type: "EMPTY_WISHLIST" });
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: "ERROR_HANDLE" });
+      Notify("Unable to clear wishlist, try again later !", "error");
+    }
+  };
+
   useEffect(() => {
     getDataFromWishlist();
   }, []);
 
   return (
     <div>
-      <WishlistContext.Provider value={{ state, dispatch, addToWishlist }}>
+      <WishlistContext.Provider
+        value={{ state, dispatch, addToWishlist, clearWishlist }}
+      >
         {children}
       </WishlistContext.Provider>
     </div>
