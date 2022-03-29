@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
@@ -30,6 +30,16 @@ const Login = () => {
       return errors;
     },
   });
+
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState("fa-solid fa-eye-slash");
+
+  const show = () => {
+    type === "password" ? setType("text") : setType("password");
+    icon === "fa-solid fa-eye"
+      ? setIcon("fa-solid fa-eye-slash")
+      : setIcon("fa-solid fa-eye");
+  };
 
   const { setLocalToken, setLocalUser } = useAuth();
 
@@ -68,18 +78,31 @@ const Login = () => {
           ) : null}
           <p htmlFor="password">Password</p>
           <input
-            type="password"
+            type={type}
             placeholder="Enter password"
             name="password"
             onChange={formik.handleChange}
             value={formik.values.password}
             onBlur={formik.handleBlur}
           />
+          <i onClick={show} class={icon}></i>
+
           <br />
           {formik.touched.password && formik.errors.password ? (
             <span className="error__display">{formik.errors.password}</span>
           ) : null}
         </div>
+        <button
+          className="login__button"
+          type="submit"
+          onClick={() => {
+            formik.values.email = "test@gmail.com";
+            formik.values.password = "test123";
+            formik.handleSubmit;
+          }}
+        >
+          Test credentials
+        </button>
         <button className="login__button" type="submit">
           Log in
         </button>
