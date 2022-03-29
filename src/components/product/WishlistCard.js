@@ -24,10 +24,10 @@ const WishlistCard = ({ item }) => {
 
       <div className="product__card-info">
         <Link to={`/product/${item._id}`}>
-          <h3>{item.name}</h3>
+          <h3>{item.name.substring(0, 15) + "..."}</h3>
           <p>Category: {item.category}</p>
           <p className="wishlist__desc">
-            {item.description.substring(0, 50) + "....."}
+            {item.description.substring(0, 45) + "....."}
           </p>
           <div className="wishlist__rating">
             <h2>

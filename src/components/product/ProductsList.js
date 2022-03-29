@@ -296,7 +296,7 @@ const ProductList = () => {
               onChange={(e) => setSearchFilter(e.target.value)}
             />
           </div>
-          <div className="product__list-grid">
+          <div className="main__product-list product__list-grid">
             {currPost
               .filter((product) => {
                 if (searchFilter === "") {

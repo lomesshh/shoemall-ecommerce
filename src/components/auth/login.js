@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useAuth } from "../../context/authcontext";
+import { Notify } from "../pages/Toast";
 
 const Login = () => {
   const formik = useFormik({
@@ -52,9 +53,11 @@ const Login = () => {
       localStorage.setItem("token", response.data.encodedToken);
       setLocalToken(response.data.encodedToken);
       setLocalUser(response.data.foundUser);
+      Notify("Login successful", "success");
       navigate("/productslist");
     } catch (error) {
       console.log(error);
+      Notify("Unable to login, please try again later", "error");
     }
   };
 

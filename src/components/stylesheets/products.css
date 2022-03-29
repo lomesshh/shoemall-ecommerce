@@ -90,6 +90,9 @@
   margin: 0 auto;
   margin-bottom: 3rem;
   margin-left: 1.5rem;
+}
+
+.main__product-list {
   min-height: 60vh;
 }
 

@@ -1,7 +1,8 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Notify } from "../pages/Toast";
 const initialValues = {
   name: "",
   email: "",
@@ -50,14 +51,26 @@ const Signup = () => {
     validate,
   });
 
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState("fa-solid fa-eye-slash");
+
+  const show = () => {
+    type === "password" ? setType("text") : setType("password");
+    icon === "fa-solid fa-eye"
+      ? setIcon("fa-solid fa-eye-slash")
+      : setIcon("fa-solid fa-eye");
+  };
+
   const navigate = useNavigate();
 
   const createUser = async (values) => {
     try {
       const response = await axios.post("/api/auth/signup", values);
       navigate("/login");
+      Notify("Registered successful, Login to continue", "success");
     } catch (error) {
       console.log(error);
+      Notify("Unable to registered, please try again later", "error");
     }
   };
 
@@ -94,13 +107,15 @@ const Signup = () => {
           ) : null}
           <p htmlFor="password">Password</p>
           <input
-            type="password"
+            type={type}
             placeholder="Enter password"
             name="password"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
           />
+          <i onClick={show} class={icon}></i>
+
           <br />
           {formik.touched.password && formik.errors.password ? (
             <span className="error__display">{formik.errors.password}</span>
