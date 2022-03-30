@@ -4,6 +4,7 @@ import { Notify } from "../pages/Toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authcontext";
 import { useOrder } from "../../context/ordercontext";
+import confetti from "canvas-confetti";
 
 // loading razorpay script
 const loadScript = async (url) => {
@@ -21,6 +22,33 @@ const loadScript = async (url) => {
 
     document.body.appendChild(script);
   });
+};
+
+const Popper = () => {
+  var end = Date.now() + 3 * 1000;
+  // go Buckeyes!
+  var colors = ["#392f5a", "#9583cf"];
+
+  (function frame() {
+    confetti({
+      particleCount: 4,
+      angle: 40,
+      spread: 55,
+      origin: { x: 0 },
+      colors: colors,
+    });
+    confetti({
+      particleCount: 4,
+      angle: 140,
+      spread: 55,
+      origin: { x: 1 },
+      colors: colors,
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
 };
 
 const Checkout = () => {
@@ -74,6 +102,7 @@ const Checkout = () => {
         orderdispatch({ type: "ADD_ORDERS", payload: tempObj });
         Notify("Your Payment is successfull !", "success");
         navigate("/profile/orders");
+        Popper();
         clearCart();
         setCouponAmt(0);
       },
@@ -97,7 +126,7 @@ const Checkout = () => {
     <div className="cart">
       <div className="cart__heading">
         <i className="fas fa-shopping-bag"></i>
-        <h1>Checkout</h1>
+        <h1 onClick={Popper}>Checkout</h1>
       </div>
 
       <div className="cart__section checkout__section">
