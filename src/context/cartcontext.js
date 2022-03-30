@@ -196,6 +196,7 @@ const CartProvider = ({ children }) => {
           setCoupon,
           applyCoupon,
           couponAmt,
+          setCouponAmt,
         }}
       >
         {children}

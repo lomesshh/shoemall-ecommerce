@@ -7,6 +7,7 @@ import { useCart } from "../../context/cartcontext";
 import { useWishlist } from "../../context/wishlistcontext";
 import { useAuth } from "../../context/authcontext";
 import Loader from "./../pages/Loader";
+import { Notify } from "../pages/Toast";
 
 const SingleProduct = () => {
   const { productId } = useParams();
@@ -39,6 +40,16 @@ const SingleProduct = () => {
     }
   };
 
+  function copy() {
+    const el = document.createElement("input");
+    el.value = window.location.href;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    Notify("Copied to clipboard", "info");
+  }
+
   return (
     <div>
       {!findItem && (
@@ -61,7 +72,15 @@ const SingleProduct = () => {
             </p>
             <h2>₹ {findItem.price}</h2>
             <p>{findItem.description}</p>
-
+            <h3>
+              <i class="fa-solid fa-hand-holding-heart"></i> Handle with care
+            </h3>
+            <h3>
+              <i class="fa-solid fa-truck-fast"></i> Fast Delivery
+            </h3>
+            <h3>
+              <i class="fa-solid fa-arrow-rotate-left"></i> 30 Days return
+            </h3>
             <div className="singleproduct__button">
               {!cartProd && <button onClick={cartHandler}>Add to cart</button>}
               {cartProd && (
@@ -78,7 +97,7 @@ const SingleProduct = () => {
                 </Link>
               )}
             </div>
-            <button className="share__button">
+            <button className="share__button" onClick={copy}>
               <i className="fas fa-share"></i>
             </button>
           </div>

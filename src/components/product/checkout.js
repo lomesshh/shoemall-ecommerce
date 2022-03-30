@@ -34,6 +34,7 @@ const Checkout = () => {
     applyCoupon,
     couponAmt,
     clearCart,
+    setCouponAmt,
   } = useCart();
   const { localUser } = useAuth();
   const { address, setAddress, orderdispatch, orderstate } = useOrder();
@@ -74,6 +75,7 @@ const Checkout = () => {
         Notify("Your Payment is successfull !", "success");
         navigate("/profile/orders");
         clearCart();
+        setCouponAmt(0);
       },
       prefill: {
         name: localUser.name,
@@ -132,6 +134,8 @@ const Checkout = () => {
                 orderdispatch({ type: "ADD_ADDRESS", payload: address });
                 setAddress({
                   ...address,
+                  name: "",
+                  email: "",
                   address: "",
                   state: "",
                   city: "",
@@ -165,6 +169,8 @@ const Checkout = () => {
                       setAddress((prev) => ({
                         ...prev,
                         address: e.target.value,
+                        name: localUser.name,
+                        email: localUser.email,
                       }))
                     }
                     required
@@ -264,7 +270,9 @@ const Checkout = () => {
             <h2>Total Amount</h2>
             <h2>₹ {finalAmount}</h2>
           </div>
-          {orderstate.deliveryAddress.name && <h3>Delivery Address</h3>}
+          {orderstate.deliveryAddress.name && (
+            <h3>Delivery Address ( Default )</h3>
+          )}
           {orderstate.deliveryAddress.name && (
             <div className="delivery__address">
               <p>Name : {orderstate.deliveryAddress.name}</p>

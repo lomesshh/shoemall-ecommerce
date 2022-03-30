@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Notify } from "../components/pages/Toast";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
@@ -29,6 +30,7 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
     setLocalToken("");
     setLocalUser({});
+    Notify("Logged Out Successfully", "warning")
     navigate("/");
   };
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { useOrder } from "../../context/ordercontext";
+import { Link } from "react-router-dom";
 
 const Orders = () => {
   const { orderstate } = useOrder();
@@ -29,17 +30,19 @@ const Orders = () => {
             </div>
             <div>
               {item.products.map((prod) => (
-                <div className="order__outer">
-                  <div className="order__image">
-                    <img src={prod.image} />
+                <Link to={`/product/${prod.id}`}>
+                  <div className="order__outer">
+                    <div className="order__image">
+                      <img src={prod.image} />
+                    </div>
+                    <div className="order__info">
+                      <h4>Name : {prod.name}</h4>
+                      <h4>Category : {prod.category}</h4>
+                      <h4>Quantity : {prod.qty}</h4>
+                      <h4>Price : ₹ {prod.price}</h4>
+                    </div>
                   </div>
-                  <div className="order__info">
-                    <h4>Name : {prod.name}</h4>
-                    <h4>Category : {prod.category}</h4>
-                    <h4>Quantity : {prod.qty}</h4>
-                    <h4>Price : ₹ {prod.price}</h4>
-                  </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

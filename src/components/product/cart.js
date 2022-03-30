@@ -47,7 +47,7 @@ const Cart = () => {
                 <p>Delivery Charge</p>
                 <p>+ ₹ {totalAmount === 0 ? 0 : 299}</p>
               </div>
-              <div>
+              <div className="totalAmt__div">
                 <h2>Total</h2>
                 <h2>₹ {finalAmount}</h2>
               </div>
