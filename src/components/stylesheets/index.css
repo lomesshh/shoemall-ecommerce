@@ -229,6 +229,16 @@
   bottom: 0%; */
 }
 
+.visitor__count {
+  position: relative;
+}
+
+.visitor__count img {
+  position: absolute;
+  margin-left: 0.3rem;
+  bottom: 0;
+}
+
 .footer__flex {
   display: flex;
   width: 100%;
@@ -258,6 +268,12 @@
 
 .footer__social i {
   color: var(--primary-color);
+}
+
+.fooeter_heart {
+  color: crimson !important;
+  text-shadow: 0 0 0.5rem crimson;
+  transition: all 0.5s ease;
 }
 
 .fa-github:hover {
@@ -326,6 +342,10 @@
   }
   .banner {
     height: 25rem;
+  }
+  .visitor__count {
+    margin-left: -5rem;
+    margin-top: 1rem;
   }
 }
 

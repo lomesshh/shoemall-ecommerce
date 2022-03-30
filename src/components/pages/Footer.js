@@ -6,8 +6,17 @@ const Footer = () => {
       <div className="footer__flex">
         <div className="footer__text">
           <h2>
-            Made with <i className="fas fa-heart"></i> by Lomesh
+            Made with <i className="fas fa-heart fooeter_heart"></i> by Lomesh
           </h2>
+          <h4 className="visitor__count">
+            Total visitors :
+            <img
+              src="https://hitwebcounter.com/counter/counter.php?page=7967750&style=0006&nbdigits=5&type=page&initCount=0"
+              title="Free Counter"
+              Alt="web counter"
+              border="0"
+            />
+          </h4>
         </div>
         <div className="footer__social">
           <a href="https://github.com/lomesshh">
