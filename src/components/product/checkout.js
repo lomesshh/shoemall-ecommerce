@@ -31,14 +31,14 @@ const Popper = () => {
 
   (function frame() {
     confetti({
-      particleCount: 4,
+      particleCount: 2,
       angle: 40,
       spread: 55,
       origin: { x: 0 },
       colors: colors,
     });
     confetti({
-      particleCount: 4,
+      particleCount: 2,
       angle: 140,
       spread: 55,
       origin: { x: 1 },
@@ -126,7 +126,7 @@ const Checkout = () => {
     <div className="cart">
       <div className="cart__heading">
         <i className="fas fa-shopping-bag"></i>
-        <h1 onClick={Popper}>Checkout</h1>
+        <h1>Checkout</h1>
       </div>
 
       <div className="cart__section checkout__section">
