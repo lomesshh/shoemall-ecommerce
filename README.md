@@ -64,9 +64,22 @@ A Shoemall is a website that allows you to buy shoes & flip flops online. we hav
 [Shoemall](https://shoemall.netlify.app/) 🚀
 
 
-## Demo
-https://user-images.githubusercontent.com/78649480/153752793-41d2bdf3-9302-49f2-b9a6-3e1790760938.mp4
+## Glimpses of Shoemall 🙈 :
 
+<table>
+  <tr>
+    <td><img src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1648705428/shoemall/Screenshot_27_n6nq14.png" alt="mockup" /></td>
+    <td><img src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1648705427/shoemall/Screenshot_28_jgxs95.png" alt="mockups" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1648705428/shoemall/Screenshot_36_vojv7y.png" alt="mockup" /></td>
+    <td><img src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1648705427/shoemall/Screenshot_29_bvowon.png" alt="mockups" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1648705426/shoemall/Screenshot_30_v3fl56.png" alt="mockup" /></td>
+    <td><img src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1648705427/shoemall/Screenshot_32_q3q3gb.png" alt="mockups" /></td>
+  </tr>
+</table>
 <h2>📬 Contact</h2>
 
 If you want to contact me, you can reach me through below handles.
