@@ -18,13 +18,7 @@ A Shoemall is a website that allows you to buy shoes & flip flops online. we hav
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-<!-- **Backend:**
 
-![nodejs](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)&nbsp;
-![expressjs](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)&nbsp;
-![mongodb](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)&nbsp;
-![jwt](	https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)&nbsp;
- -->
 **Payment Gateway:**
 
 ![Razorpay](https://img.shields.io/badge/Razorpay-02042B?style=for-the-badge&logo=razorpay&logoColor=3395FF)
@@ -38,21 +32,36 @@ A Shoemall is a website that allows you to buy shoes & flip flops online. we hav
 
 
 ## Screens ( All screens are responsive )
+   - Homepage
+   - Product Listing Page with Filters
+   - Single Product Page
+   - Cart Management
+   - Wishlist Management
+   - Address management
+   - Login / Logout
+   - Signup
+   - User Profile page
+   - Checkout
+   - Order summary
 
-> Note : If you are not able to access all components from main screen we have provided direct link for all components seperately here for you.
 
-   - Homepage - [Direct link](https://shoemall.netlify.app/)
-   - Product Listing Page with Filters - [Direct link](https://shoemall.netlify.app/components/products.html)
-   - Cart Management - [Direct link](https://shoemall.netlify.app/components/cart.html)
-   - Wishlist Management - [Direct link](https://shoemall.netlify.app/components/wishlist.html)
-   - Login - [Direct link](https://shoemall.netlify.app/components/login.html)
-   - Signup - [Direct link](https://shoemall.netlify.app/components/signup.html)
-   - Checkout - [Direct link](https://shoemall.netlify.app/components/checkout.html)
-   - Single Product Page - [Direct link](https://shoemall.netlify.app/components/singleproduct.html)
+## 🚀 Features
+- Login/Signup User Account
+- Product Filters Based on Price, Category, Ratings | Sort By
+- Product Search
+- Products Pagination (Default 6 Products Per Page)
+- Wishlist Add/Remove Items
+- Cart Add/Remove Items | Update Quantities
+- Address management
+- Order summary
+- Coupons provided for discount
+- Razorpay payment gateway
+- My orders
+- Order details of all ordered item
 
 
 ## Live
-[Shoemall](https://shoemall.netlify.app/)
+[Shoemall](https://shoemall.netlify.app/) 🚀
 
 
 ## Demo
