@@ -17,13 +17,13 @@ const WishlistCard = ({ item }) => {
   return (
     <div className="product__list-card">
       <div className="product__card-image">
-        <Link to={`/product/${item._id}`}>
+        <Link to={`/product/${item.id}`}>
           <img src={item.image} alt="product" />
         </Link>
       </div>
 
       <div className="product__card-info">
-        <Link to={`/product/${item._id}`}>
+        <Link to={`/product/${item.id}`}>
           <h3>{item.name.substring(0, 15) + "..."}</h3>
           <p>Category: {item.category}</p>
           <p className="wishlist__desc">
@@ -38,7 +38,7 @@ const WishlistCard = ({ item }) => {
         </Link>
 
         <div className="product__card-heart">
-          <Link to={`/product/${item._id}`}>
+          <Link to={`/product/${item.id}`}>
             <h3>₹ {item.price}</h3>
           </Link>
           <h2>

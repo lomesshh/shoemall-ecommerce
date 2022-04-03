@@ -18,12 +18,12 @@ const CartCard = ({ item }) => {
   return (
     <div className="product__list-card">
       <div className="product__card-image">
-        <Link to={`/product/${item._id}`}>
+        <Link to={`/product/${item.id}`}>
           <img src={item.image} alt="product" />
         </Link>
       </div>
       <div className="product__card-info">
-        <Link to={`/product/${item._id}`}>
+        <Link to={`/product/${item.id}`}>
           <h3>
             {item.name.length < 15
               ? item.name
@@ -31,7 +31,7 @@ const CartCard = ({ item }) => {
           </h3>
         </Link>
         <div className="product__card-heart">
-          <Link to={`/product/${item._id}`}>
+          <Link to={`/product/${item.id}`}>
             <h3>₹ {item.price}</h3>
           </Link>
           <h2>
@@ -39,7 +39,7 @@ const CartCard = ({ item }) => {
           </h2>
         </div>
         <div className="wishlist__rating">
-          <Link to={`/product/${item._id}`}>
+          <Link to={`/product/${item.id}`}>
             <h2>
               {average(item.ratings).toFixed(0)}
               <i className="fa-solid fa-star"></i>
