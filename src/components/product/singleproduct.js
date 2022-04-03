@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useFilter } from "../../context/filtercontext";
 import "../stylesheets/singleproduct.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,6 +15,7 @@ const SingleProduct = () => {
   const { state, addToWishlist } = useWishlist();
   const { cartstate, addToCart } = useCart();
   const { localToken } = useAuth();
+  const navigate = useNavigate();
 
   const cartProd = cartstate.cart.find((prod) => prod.id === productId);
   const wishlistProd = state.wishlist.find((prod) => prod.id === productId);
