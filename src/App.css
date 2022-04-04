@@ -3,15 +3,24 @@
 @import "./components/stylesheets/component.css";
 :root {
   --background-color: #f3effd;
-  --primary-color: #392f5a;
-  --text-color: rgb(80, 80, 80);
+  --primary-color: #392f5a; 
+  --text-color: rgb(80, 80, 80); 
+  --box-shadow: rgba(0, 0, 0, 0.3);
 }
+
+[data-theme='dark'] {
+  --background-color: #000;
+  --primary-color: #BB86FC;
+  --text-color: rgb(214, 214, 214);
+  --box-shadow: rgba(255, 255, 255, 0.44); 
+}
+
 
 html {
   scroll-behavior: smooth;
 }
 
-body {
+body, .App {
   background-color: var(--background-color);
 }
 
@@ -21,5 +30,5 @@ body {
   font-family: "Nunito", sans-serif;
   margin: 0;
   padding: 0;
-  color: var(--text-color);
+  transition: 0.5s;
 }
