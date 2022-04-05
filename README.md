@@ -58,6 +58,7 @@ A Shoemall is a website that allows you to buy shoes & flip flops online. we hav
 - Razorpay payment gateway
 - My orders
 - Order details of all ordered item
+- Darkmode available
 
 
 ## Live
