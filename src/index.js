@@ -4,11 +4,13 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { makeServer } from "./server";
-import { FilterProvider } from "./context/filtercontext";
-import { WishlistProvider } from "./context/wishlistcontext";
-import { CartProvider } from "./context/cartcontext";
-import { AuthProvider } from "./context/authcontext";
-import { OrderProvider } from "./context/ordercontext";
+import {
+  AuthProvider,
+  FilterProvider,
+  WishlistProvider,
+  CartProvider,
+  OrderProvider,
+} from "frontend/context";
 
 makeServer();
 

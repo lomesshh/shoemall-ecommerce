@@ -3,10 +3,8 @@ import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Nav from "./components/pages/Nav";
-import Footer from "./components/pages/Footer";
-import RoutesList from "./components/pages/RoutesList";
-import { useAuth } from "./context/authcontext";
+import { useAuth } from "frontend/context";
+import { Nav, Footer, RoutesList } from "frontend/components";
 
 export default function App() {
   const { theme } = useAuth();
