@@ -91,10 +91,6 @@
   color: var(--background-color);
   cursor: pointer;
   width: 100%;
-  /* margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
 }
 
 .cart__grid .product__card-heart {
