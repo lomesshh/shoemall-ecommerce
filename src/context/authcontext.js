@@ -1,9 +1,23 @@
 import React, { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Notify } from "../components/pages/Toast";
+import useLocalStorage from "use-local-storage";
+
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+  // dark mode
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
+
+  const switchTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
+
   const navigate = useNavigate();
 
   const userdata = JSON.parse(localStorage.getItem("user"));
@@ -30,7 +44,7 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
     setLocalToken("");
     setLocalUser({});
-    Notify("Logged Out Successfully", "warning")
+    Notify("Logged Out Successfully", "warning");
     navigate("/");
   };
 
@@ -45,6 +59,8 @@ const AuthProvider = ({ children }) => {
           localUser,
           setLocalUser,
           handleLogout,
+          theme,
+          switchTheme,
         }}
       >
         {children}

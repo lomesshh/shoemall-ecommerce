@@ -147,7 +147,8 @@ const Checkout = () => {
                   <button
                     className="select__address-button"
                     onClick={() =>
-                      orderdispatch({ type: "DELIVERY_ADDRESS", payload: item })
+                      {Notify("Address selected", "info")
+                      orderdispatch({ type: "DELIVERY_ADDRESS", payload: item })}
                     }
                   >
                     Select <i className="fa-solid fa-location-dot"></i>

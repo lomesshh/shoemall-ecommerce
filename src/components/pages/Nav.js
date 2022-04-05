@@ -7,10 +7,8 @@ import "../stylesheets/index.css";
 
 const Nav = () => {
   const { state, clearWishlist } = useWishlist();
-
   const { cartstate, clearCart } = useCart();
-
-  const { token, localToken, handleLogout } = useAuth();
+  const { token, localToken, handleLogout, theme, switchTheme } = useAuth();
 
   const navigate = useNavigate();
 
@@ -20,13 +18,26 @@ const Nav = () => {
         <div>
           <img
             className="nav__logo"
-            src="https://res.cloudinary.com/dgwzpbj4k/image/upload/v1647240006/shoemall/logo_rhszkc.png"
+            src={`${
+              theme === "dark"
+                ? `https://res.cloudinary.com/dgwzpbj4k/image/upload/v1649081126/shoemall/ShoeMall-removebg-preview_1_qao4i8.png`
+                : `https://res.cloudinary.com/dgwzpbj4k/image/upload/v1647240006/shoemall/logo_rhszkc.png`
+            }`}
             alt="logo-img"
           />
         </div>
       </Link>
       <div className="nav__option">
         <ul>
+          <li>
+            <p>
+              {theme === "light" ? (
+                <i class="fa-solid fa-moon" onClick={switchTheme}></i>
+              ) : (
+                <i class="fa-solid fa-sun" onClick={switchTheme}></i>
+              )}
+            </p>
+          </li>
           {token && (
             <li>
               <Link to="/">

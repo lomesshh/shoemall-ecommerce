@@ -11,6 +11,7 @@ const Notify = (msg, type) =>
     draggable: true,
     type: type,
     transition: Slide,
+    theme: "dark",
   });
 
 export { Notify };
