@@ -44,7 +44,7 @@
 }
 
 .profile__name {
-  box-shadow: 0 5px 3px -5px #222;
+  box-shadow: 0 5px 3px -5px var(--box-shadow);
   margin: 1rem 0;
   padding-bottom: 2rem;
   position: relative;
