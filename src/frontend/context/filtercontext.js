@@ -11,6 +11,7 @@ const filterContext = createContext();
 
 const FilterProvider = ({ children }) => {
   const [flag, setFlag] = useState(false);
+  const [searchFilter, setSearchFilter] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -204,11 +205,29 @@ const FilterProvider = ({ children }) => {
 
   const ratingData = getRatingDate(filteredData, state.ratingStar);
   const sortedData = getDataSorted(ratingData, state.sortby);
+  const searchedData = sortedData.filter((product) => {
+    if (searchFilter === "") {
+      return product;
+    } else if (
+      product.name.toLowerCase().includes(searchFilter.toLowerCase())
+    ) {
+      return product;
+    }
+  });
 
   return (
     <div>
       <filterContext.Provider
-        value={{ sortedData, state, dispatch, allproducts, setFlag, flag }}
+        value={{
+          state,
+          dispatch,
+          allproducts,
+          setFlag,
+          flag,
+          searchFilter,
+          searchedData,
+          setSearchFilter,
+        }}
       >
         {children}
       </filterContext.Provider>

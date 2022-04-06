@@ -5,14 +5,14 @@ import { Pagination } from "frontend/components";
 
 const ProductList = () => {
   const [showfilter, setShowfilter] = useState(false);
-  const [searchFilter, setSearchFilter] = useState("");
-  const { sortedData, dispatch, state } = useFilter();
+  const { dispatch, state, searchFilter, setSearchFilter, searchedData } =
+    useFilter();
   const [currPage, setCurrPage] = useState(1);
   const [postPerPage] = useState(6);
 
   const lastPostIndex = currPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;
-  const currPost = sortedData.slice(firstPostIndex, lastPostIndex);
+  const currPost = searchedData.slice(firstPostIndex, lastPostIndex);
 
   const paginate = (pageNumber) => setCurrPage(pageNumber);
 
@@ -27,7 +27,12 @@ const ProductList = () => {
 
         {showfilter && (
           <div className="short__filter-filterlist">
-            <button onClick={() => dispatch({ type: "CLEAR_FILTER" })}>
+            <button
+              onClick={() => {
+                setSearchFilter("");
+                dispatch({ type: "CLEAR_FILTER" });
+              }}
+            >
               Clear all filters
             </button>
             <div className="filters product__filter-sort">
@@ -160,7 +165,12 @@ const ProductList = () => {
         <div className="product__filter">
           <div className="product__filter-heading">
             <h1>Filters</h1>
-            <button onClick={() => dispatch({ type: "CLEAR_FILTER" })}>
+            <button
+              onClick={() => {
+                setSearchFilter("");
+                dispatch({ type: "CLEAR_FILTER" });
+              }}
+            >
               Clear
             </button>
           </div>
@@ -296,25 +306,13 @@ const ProductList = () => {
             />
           </div>
           <div className="main__product-list product__list-grid">
-            {currPost
-              .filter((product) => {
-                if (searchFilter === "") {
-                  return product;
-                } else if (
-                  product.name
-                    .toLowerCase()
-                    .includes(searchFilter.toLowerCase())
-                ) {
-                  return product;
-                }
-              })
-              .map((item, index) => (
-                <ProductCard item={item} key={index + 1} />
-              ))}
+            {currPost.map((item, index) => (
+              <ProductCard item={item} key={index + 1} />
+            ))}
           </div>
           <Pagination
             postPerPage={postPerPage}
-            totalPosts={sortedData.length}
+            totalPosts={searchedData.length}
             paginate={paginate}
             currPage={currPage}
           />
