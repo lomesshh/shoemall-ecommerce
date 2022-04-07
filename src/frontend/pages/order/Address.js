@@ -111,6 +111,18 @@ const Address = () => {
               Address : {item.address}, {item.city}, Pin-code : {item.zipcode}
             </p>
             <p>State : {item.state}</p>
+            <button
+              className="select__address-button"
+              onClick={() => {
+                Notify("Address deleted", "info");
+                orderdispatch({
+                  type: "REMOVE_ADDRESS",
+                  payload: { address: item },
+                });
+              }}
+            >
+              Delete <i class="fa-solid fa-trash"></i>
+            </button>
           </div>
         ))}
       </div>
