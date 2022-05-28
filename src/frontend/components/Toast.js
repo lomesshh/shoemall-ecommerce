@@ -1,4 +1,4 @@
-import { Slide, toast } from "react-toastify";
+import { Slide, toast, style } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Notify = (msg, type) =>
@@ -11,7 +11,7 @@ const Notify = (msg, type) =>
     draggable: true,
     type: type,
     transition: Slide,
-    theme: "dark",
+    theme: "light",
   });
 
 export { Notify };
