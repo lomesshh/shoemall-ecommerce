@@ -189,6 +189,10 @@ i {
   color: crimson;
 }
 
+.short__filter h4, .product__filter h4{
+  cursor: pointer;
+}
+
 .short__filter-button button {
   cursor: pointer;
   width: 100%;

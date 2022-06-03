@@ -37,25 +37,23 @@ const ProductList = () => {
             </button>
             <div className="filters product__filter-sort">
               <h2>Sort by</h2>
-              <h4>
+              <h4
+                onClick={() => dispatch({ type: "SORT", payload: "HIGH_LOW" })}
+              >
                 <input
                   type="radio"
                   name="sort1"
                   checked={state.sortHighToLow}
-                  onClick={() =>
-                    dispatch({ type: "SORT", payload: "HIGH_LOW" })
-                  }
                 />
                 High to Low
               </h4>
-              <h4>
+              <h4
+                onClick={() => dispatch({ type: "SORT", payload: "LOW_HIGH" })}
+              >
                 <input
                   type="radio"
                   name="sort1"
                   checked={state.sortLowToHigh}
-                  onClick={() =>
-                    dispatch({ type: "SORT", payload: "LOW_HIGH" })
-                  }
                 />
                 Low to High
               </h4>
@@ -76,43 +74,47 @@ const ProductList = () => {
 
             <div className="filters product__filter-category">
               <h2>Category</h2>
-              <h4>
+              <h4
+                onClick={() =>
+                  dispatch({ type: "CATEGORY", shoetype: "CASUAL_SHOE" })
+                }
+              >
                 <input
                   type="checkbox"
                   checked={state.categoryArr.includes("CASUAL_SHOE")}
-                  onClick={() =>
-                    dispatch({ type: "CATEGORY", shoetype: "CASUAL_SHOE" })
-                  }
                 />
                 Casual shoe
               </h4>
-              <h4>
+              <h4
+                onClick={() =>
+                  dispatch({ type: "CATEGORY", shoetype: "SPORTS_SHOE" })
+                }
+              >
                 <input
                   type="checkbox"
                   checked={state.categoryArr.includes("SPORTS_SHOE")}
-                  onClick={() =>
-                    dispatch({ type: "CATEGORY", shoetype: "SPORTS_SHOE" })
-                  }
                 />
                 Sports shoe
               </h4>
-              <h4>
+              <h4
+                onClick={() =>
+                  dispatch({ type: "CATEGORY", shoetype: "FORMAL_SHOE" })
+                }
+              >
                 <input
                   type="checkbox"
                   checked={state.categoryArr.includes("FORMAL_SHOE")}
-                  onClick={() =>
-                    dispatch({ type: "CATEGORY", shoetype: "FORMAL_SHOE" })
-                  }
                 />
                 Formal shoe
               </h4>
-              <h4>
+              <h4
+                onClick={() =>
+                  dispatch({ type: "CATEGORY", shoetype: "FLIP_FLOP" })
+                }
+              >
                 <input
                   type="checkbox"
                   checked={state.categoryArr.includes("FLIP_FLOP")}
-                  onClick={() =>
-                    dispatch({ type: "CATEGORY", shoetype: "FLIP_FLOP" })
-                  }
                 />
                 Flip flop
               </h4>
@@ -120,41 +122,21 @@ const ProductList = () => {
 
             <div className="filters product__filter-rating">
               <h2>Rating</h2>
-              <h4>
-                <input
-                  type="radio"
-                  name="rating1"
-                  checked={state.fiveStar}
-                  onClick={() => dispatch({ type: "RATING", star: "STAR_5" })}
-                />
-                5 Stars
+              <h4 onClick={() => dispatch({ type: "RATING", star: "STAR_5" })}>
+                <input type="radio" name="rating1" checked={state.fiveStar} />5
+                Stars
               </h4>
-              <h4>
-                <input
-                  type="radio"
-                  name="rating1"
-                  checked={state.fourStar}
-                  onClick={() => dispatch({ type: "RATING", star: "STAR_4" })}
-                />
-                4 Stars & above
+              <h4 onClick={() => dispatch({ type: "RATING", star: "STAR_4" })}>
+                <input type="radio" name="rating1" checked={state.fourStar} />4
+                Stars & above
               </h4>
-              <h4>
-                <input
-                  type="radio"
-                  name="rating1"
-                  checked={state.threeStar}
-                  onClick={() => dispatch({ type: "RATING", star: "STAR_3" })}
-                />
-                3 Stars & above
+              <h4 onClick={() => dispatch({ type: "RATING", star: "STAR_3" })}>
+                <input type="radio" name="rating1" checked={state.threeStar} />3
+                Stars & above
               </h4>
-              <h4>
-                <input
-                  type="radio"
-                  name="rating1"
-                  checked={state.twoStar}
-                  onClick={() => dispatch({ type: "RATING", star: "STAR_2" })}
-                />
-                2 Stars & above
+              <h4 onClick={() => dispatch({ type: "RATING", star: "STAR_2" })}>
+                <input type="radio" name="rating1" checked={state.twoStar} />2
+                Stars & above
               </h4>
             </div>
           </div>
@@ -177,22 +159,12 @@ const ProductList = () => {
 
           <div className="filters product__filter-sort">
             <h2>Sort by</h2>
-            <h4>
-              <input
-                type="radio"
-                name="sort"
-                checked={state.sortHighToLow}
-                onClick={() => dispatch({ type: "SORT", payload: "HIGH_LOW" })}
-              />
+            <h4 onClick={() => dispatch({ type: "SORT", payload: "HIGH_LOW" })}>
+              <input type="radio" name="sort" checked={state.sortHighToLow} />
               High to Low
             </h4>
-            <h4>
-              <input
-                type="radio"
-                name="sort"
-                checked={state.sortLowToHigh}
-                onClick={() => dispatch({ type: "SORT", payload: "LOW_HIGH" })}
-              />
+            <h4 onClick={() => dispatch({ type: "SORT", payload: "LOW_HIGH" })}>
+              <input type="radio" name="sort" checked={state.sortLowToHigh} />
               Low to High
             </h4>
           </div>
@@ -213,43 +185,47 @@ const ProductList = () => {
 
           <div className="filters product__filter-category">
             <h2>Category</h2>
-            <h4>
+            <h4
+              onClick={() =>
+                dispatch({ type: "CATEGORY", shoetype: "CASUAL_SHOE" })
+              }
+            >
               <input
                 type="checkbox"
                 checked={state.categoryArr.includes("CASUAL_SHOE")}
-                onClick={() =>
-                  dispatch({ type: "CATEGORY", shoetype: "CASUAL_SHOE" })
-                }
               />
               Casual shoe
             </h4>
-            <h4>
+            <h4
+              onClick={() =>
+                dispatch({ type: "CATEGORY", shoetype: "SPORTS_SHOE" })
+              }
+            >
               <input
                 type="checkbox"
                 checked={state.categoryArr.includes("SPORTS_SHOE")}
-                onClick={() =>
-                  dispatch({ type: "CATEGORY", shoetype: "SPORTS_SHOE" })
-                }
               />
               Sports shoe
             </h4>
-            <h4>
+            <h4
+              onClick={() =>
+                dispatch({ type: "CATEGORY", shoetype: "FORMAL_SHOE" })
+              }
+            >
               <input
                 type="checkbox"
                 checked={state.categoryArr.includes("FORMAL_SHOE")}
-                onClick={() =>
-                  dispatch({ type: "CATEGORY", shoetype: "FORMAL_SHOE" })
-                }
               />
               Formal shoe
             </h4>
-            <h4>
+            <h4
+              onClick={() =>
+                dispatch({ type: "CATEGORY", shoetype: "FLIP_FLOP" })
+              }
+            >
               <input
                 type="checkbox"
                 checked={state.categoryArr.includes("FLIP_FLOP")}
-                onClick={() =>
-                  dispatch({ type: "CATEGORY", shoetype: "FLIP_FLOP" })
-                }
               />
               Flip flop
             </h4>
@@ -257,41 +233,21 @@ const ProductList = () => {
 
           <div className="filters product__filter-rating">
             <h2>Rating</h2>
-            <h4>
-              <input
-                type="radio"
-                name="rating"
-                checked={state.fiveStar}
-                onClick={() => dispatch({ type: "RATING", star: "STAR_5" })}
-              />
-              5 Stars
+            <h4 onClick={() => dispatch({ type: "RATING", star: "STAR_5" })}>
+              <input type="radio" name="rating" checked={state.fiveStar} />5
+              Stars
             </h4>
-            <h4>
-              <input
-                type="radio"
-                name="rating"
-                checked={state.fourStar}
-                onClick={() => dispatch({ type: "RATING", star: "STAR_4" })}
-              />
-              4 Stars & above
+            <h4 onClick={() => dispatch({ type: "RATING", star: "STAR_4" })}>
+              <input type="radio" name="rating" checked={state.fourStar} />4
+              Stars & above
             </h4>
-            <h4>
-              <input
-                type="radio"
-                name="rating"
-                checked={state.threeStar}
-                onClick={() => dispatch({ type: "RATING", star: "STAR_3" })}
-              />
-              3 Stars & above
+            <h4 onClick={() => dispatch({ type: "RATING", star: "STAR_3" })}>
+              <input type="radio" name="rating" checked={state.threeStar} />3
+              Stars & above
             </h4>
-            <h4>
-              <input
-                type="radio"
-                name="rating"
-                checked={state.twoStar}
-                onClick={() => dispatch({ type: "RATING", star: "STAR_2" })}
-              />
-              2 Stars & above
+            <h4 onClick={() => dispatch({ type: "RATING", star: "STAR_2" })}>
+              <input type="radio" name="rating" checked={state.twoStar} />2
+              Stars & above
             </h4>
           </div>
         </div>
