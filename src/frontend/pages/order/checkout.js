@@ -83,7 +83,7 @@ const Checkout = () => {
     }
 
     const options = {
-      key: "rzp_test_m6yRXv3WmJReRW",
+      key: "rzp_test_cCn2oGcZQ63Cgd",
       amount: finalAmount * 100,
       currency: "INR",
       name: "Shoemall",
